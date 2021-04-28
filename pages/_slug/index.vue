@@ -10,8 +10,8 @@
       <div class="text-sm text-red-700">{{ safety }}</div>
     </div>
 
-    <div class="flex mb-8">
-      <div class="w-80 mr-16 flex-shrink-0">
+    <div class="md:flex mb-8">
+      <div class="md:w-80 md:mr-16 flex-shrink-0">
         <img class="m-0 object-cover w-full h-80 rounded-md" :src="image.url" :alt="shape">
         <div class="mt-16">
           <img class="object-cover w-full" :src="product_size.url" alt="">
@@ -19,8 +19,9 @@
       </div>
       <div class="flex-grow">
         <div class="post" v-html="summary"></div>
-        <div class="size" v-html="createTable"></div>
-
+        <div class="overflow-scroll">
+          <div class="size" v-html="createTable"></div>
+        </div>
       </div>
     </div>
 
@@ -59,7 +60,6 @@ export default {
         headers: { 'X-API-KEY': 'c1567ee1-ca6e-4d8c-b1c7-0263a1130920' }
       }
     )
-    console.log(data.sizes.replace(/[\u0000-\u0019]+/g,""))
     data.sizeTableDom = JSON.parse(data.sizes.replace(/[\u0000-\u0019]+/g,""));
     return data
   }

@@ -1,13 +1,13 @@
 <template>
-  <div class="container">
+  <div class="container mt-8">
     <ul class="">
       <li v-for="content in contents" :key="content.id">
         <nuxt-link :to="`/${content.id}`">
-          <div class="flex items-center hover:opacity-75">
-            <img class="object-cover w-72 h-96 rounded-md" :src="content.image.url" :alt="content.shape">
-            <div class="ml-8">
+          <div class="md:flex items-center hover:opacity-75">
+            <img class="object-cover md:w-72 md:h-96 rounded-md" :src="content.image.url" :alt="content.shape">
+            <div class="md:ml-8 mt-4">
               <div class="text-xl font-bold text-gray-400">{{ content.type }}</div>
-              <div class="text-4xl font-bold text-gray-900">{{ content.shape }}</div>
+              <div class="text-3xl md:text-4xl font-bold text-gray-900">{{ content.shape }}</div>
 
             </div>
           </div>
@@ -29,7 +29,6 @@ export default {
         headers: { 'X-API-KEY': 'c1567ee1-ca6e-4d8c-b1c7-0263a1130920' }
       }
     )
-    console.log(data)
     return data
   }
 }
