@@ -1,5 +1,14 @@
 # Nuxt.jsにTailwindCSS、microCMS、SCSSを導入した雛形
 
+## Deploy to Github Pages Setup
+
+コミットを行ったあと
+
+```bash
+$ yarn generate
+$ yarn deploy
+```
+
 ## Build Setup
 
 ```bash
