@@ -1,0 +1,160 @@
+@import "mixins";
+
+
+/*
+Buttons
+*/
+.button {
+  @include button;
+}
+
+.button-skelton {
+  @include button-skelton;
+}
+
+.button-rounded {
+  @include button-rounded;
+}
+
+.button-text {
+  @include button-text;
+}
+
+.button:disabled {
+  @apply bg-gray-400 cursor-not-allowed shadow-none;
+
+  &:hover {
+    @apply  shadow-none;
+    filter: none;
+  }
+}
+
+.tabs {
+  -webkit-overflow-scrolling: touch;
+  @apply whitespace-nowrap overflow-hidden overflow-x-auto justify-between flex items-stretch;
+  ul {
+    @apply text-gray-600 m-0 p-0 justify-start items-center flex-shrink-0 flex-grow flex border-b border-gray-300;
+  }
+  li {
+    @apply block m-0 p-0;
+    &::before, &::after {
+      display: none;
+    }
+    &.is-active {
+      a {
+        @apply border-b border-blue-500 text-blue-500;
+      }
+    }
+  }
+  a {
+    @apply text-gray-700 cursor-pointer no-underline border-b border-gray-300 items-center flex justify-center;
+
+    margin-bottom: -1px;
+    padding: .5em 1em;
+    vertical-align: top;
+    &:hover {
+      @apply border-b border-gray-900 text-gray-800;
+    }
+  }
+  &-boxed {
+    a {
+      border: 1px solid transparent;
+      @apply rounded-t-md ;
+      &:hover {
+        background-color: #fff;
+        @apply border-gray-300 border-b-0;
+      }
+    }
+    li {
+      &.is-active {
+        a {
+          @apply border-b bg-white border-gray-300;
+          border-bottom-color: transparent!important;
+        }
+      }
+    }
+  }
+  &-xs {
+    a {
+      @apply text-xs;
+    }
+  }
+  &-sm {
+    a {
+      @apply text-sm;
+    }
+  }
+  &-lg {
+    a {
+      @apply text-lg;
+    }
+  }
+}
+
+.tag {
+  @include tag;
+}
+
+.card {
+  @include card;
+  &-outlined {
+    @apply border border-gray-200;
+  }
+}
+
+.modal {
+  @include modal;
+}
+
+.modal-content {
+  @include modal-content;
+}
+
+.spinner {
+  &::after {
+    content: "\f3f4";
+    font-family: "Font Awesome 5 Pro";
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+
+    @apply inline-block animate-spin;
+  }
+}
+
+.menu {
+  @include menu;
+}
+
+.alert {
+  @include alert;
+
+  &-inline {
+    @apply inline-flex;
+  }
+}
+
+.icon-button {
+  @include icon-button;
+
+  &-xl {
+    @apply text-xl w-12 h-12;
+  }
+
+  &-2xl {
+    @apply text-2xl w-16 h-16;
+  }
+}
+
+.accordion {
+  @include accordion;
+}
+
+.form-input {
+  @include input-style;
+}
+.textarea {
+  @include input-style;
+  @apply w-full;
+}

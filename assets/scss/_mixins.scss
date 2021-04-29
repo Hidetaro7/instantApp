@@ -1,0 +1,333 @@
+
+@mixin button {
+    @apply text-center text-white dark:text-black transition bg-blue-500 rounded-md shadow justify-center items-center cursor-pointer;
+    @apply inline-flex no-underline #{!important};
+    padding: .8em 1.6em;
+    line-height: 1;
+
+    &:focus {
+      @apply outline-none;
+    }
+
+    &:hover {
+      @apply shadow-lg;
+
+      filter: brightness(105%);
+    }
+
+    &:active {
+      filter: brightness(90%);
+    }
+  }
+
+  @mixin button-skelton {
+    @apply bg-transparent border-blue-500 dark:border-blue-300 border text-blue-500;
+
+
+    &:hover {
+      @apply bg-blue-50 dark:bg-blue-800 bg-opacity-30;
+    }
+  }
+
+  @mixin button-rounded {
+    @apply rounded-full;
+  }
+
+  @mixin button-text {
+    @apply font-bold text-blue-500 bg-transparent shadow-none ;
+
+    &:hover {
+      @apply bg-gray-100 shadow-none dark:bg-gray-800 text-blue-400;
+      filter: none;
+    }
+    &:active {
+      filter: brightness(90%);
+    }
+  }
+
+  @mixin menu {
+    ul,
+    li {
+      @apply m-0 p-0 list-none #{!important};
+    }
+
+    .menu-label {
+      @apply mb-2 font-bold text-sm text-gray-400;
+    }
+
+    ul {
+      @apply mb-4 #{!important};
+    }
+
+    li {
+      a {
+        @apply text-gray-700 dark:text-gray-50 transition px-4 py-3 border-b border-gray-200 block dark:border-gray-600;
+        @apply no-underline block #{!important};
+
+        &:hover {
+          @apply bg-gray-50 dark:bg-gray-800;
+        }
+
+        &:active {
+          @apply bg-gray-100;
+        }
+      }
+
+      &:first-child {
+        a {
+          @apply border-t border-gray-200 dark:border-gray-600;
+        }
+      }
+
+      &::before {
+        @apply hidden;
+      }
+
+      ul {
+        @apply pl-4 ml-2 relative #{!important};
+
+        &::before {
+          content: "";
+          height: calc(100% - 20px);
+          top: 10px;
+
+          @apply bg-gray-100 dark:bg-gray-800 block rounded-sm w-0.5 absolute left-2 transform;
+        }
+
+        li {
+          &:first-child {
+            a {
+              @apply border-t-0;
+            }
+          }
+        }
+      }
+    }
+
+    &-noborder {
+      li {
+        a {
+          @apply border-none font-bold;
+
+          &:hover {
+            @apply rounded font-bold;
+          }
+        }
+      }
+    }
+
+    &-outline {
+      ul {
+        @apply border border-gray-300 dark:border-gray-600 overflow-hidden rounded-lg;
+      }
+
+      li {
+        &:last-child {
+          a {
+            @apply border-b-0;
+          }
+        }
+
+        &:first-child {
+          a {
+            @apply border-t-0;
+          }
+        }
+
+        ul {
+          @apply border-0;
+        }
+      }
+    }
+
+    &-narrow {
+      li {
+        a {
+          @apply py-1 px-2;
+        }
+      }
+    }
+  }
+
+  @mixin card {
+    @apply shadow-lg rounded-md overflow-hidden dark:border-gray-600;
+  }
+
+  @mixin modal-content {
+    @apply transition duration-300 relative bg-white dark:bg-gray-800 rounded-xl p-8;
+
+    .modal-close {
+      @apply z-50 absolute right-2 -top-14 lg:top-2;
+    }
+  }
+
+  $breakpoints: (
+    "sm"  : 640px,
+    "md"  : 768px,
+    "lg" : 1024px,
+    "xl": 1280px,
+    "2xl": 1536px
+  );
+
+  @mixin modal {
+    @apply fixed w-screen h-screen left-0 top-0 flex justify-center items-center invisible z-50;
+
+    .modal-backdrop {
+      @apply absolute w-screen h-screen bg-gray-200 dark:bg-gray-900 bg-opacity-90;
+    }
+
+    .modal-content {
+      @include modal-content;
+      // max-w-sm
+      @apply opacity-0 mx-2 md:mx-8 lg:mx-auto max-h-full md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl;
+    }
+
+    &.is-show {
+      @apply visible;
+
+      .modal-content {
+        @apply opacity-100 ;
+      }
+    }
+
+    &.modal-sm {
+      .modal-content {
+        width: map-get($breakpoints, "sm");
+      }
+    }
+
+    &.modal-md {
+      .modal-content {
+        width: map-get($breakpoints, "md");
+      }
+    }
+
+    &.modal-lg {
+      .modal-content {
+        width: map-get($breakpoints, "lg");
+      }
+    }
+
+    &.modal-xl {
+      .modal-content {
+        width: map-get($breakpoints, "xl");
+      }
+    }
+
+  }
+
+  @mixin tag {
+    @apply inline-flex px-2 py-1 text-xs rounded text-black bg-white border border-gray-400 hover:border-gray-600;
+    @apply no-underline #{!important};
+
+    .close {
+      @apply flex justify-center items-center text-xs ml-2;
+
+      i {
+        @apply inline-flex;
+      }
+
+      &:hover {
+        @apply opacity-50 cursor-pointer bg-gray-300 bg-opacity-10;
+      }
+
+      &:active {
+        @apply opacity-100 bg-gray-600 bg-opacity-10;
+      }
+    }
+    &-fill {
+      @apply border-0 bg-blue-500;
+      @apply  text-white #{!important}
+    }
+    &-rounded {
+      @apply rounded-full px-3;
+    }
+  }
+
+  @mixin alert {
+    @apply flex items-center justify-between rounded bg-red-100 py-4 px-5 relative dark:text-black;
+
+    &-blue {
+      @apply bg-blue-500 text-white dark:text-white;
+    }
+
+    &-warning {
+      @apply bg-yellow-100;
+    }
+
+    &-info {
+      @apply bg-blue-100;
+    }
+
+    &-light {
+      @apply bg-gray-100;
+    }
+
+    &-dark {
+      @apply bg-gray-800 text-white dark:text-white;
+    }
+
+    &-success {
+      @apply bg-green-200;
+    }
+
+    &-danger {
+      @apply bg-red-600 text-white dark:text-white;
+    }
+  }
+
+  @mixin icon-button {
+    @apply inline-flex justify-center items-center  text-base text-gray-800 bg-gray-100 rounded-full outline-none w-8 h-8 transition bg-opacity-50 relative dark:bg-gray-800 dark:text-white;
+
+    .icon-button-inner {
+      @apply w-full h-full rounded-full inline-flex justify-center items-center;
+    }
+
+    &:focus {
+      @apply outline-none;
+    }
+
+    &:hover {
+      @apply bg-gray-50 dark:bg-gray-700;
+
+      &::after {
+        content: attr(data-label);
+
+        @apply inline-flex left-1/2 -top-10 px-4 py-1 absolute transform -translate-x-1/2 bg-gray-100 rounded text-sm whitespace-nowrap dark:bg-gray-800 dark:text-white bg-opacity-50;
+      }
+    }
+
+    &:active {
+      @apply bg-gray-200 dark:bg-gray-800;
+    }
+  }
+  @mixin accordion {
+    .accordion-header {
+      @apply w-full px-4 flex justify-between items-center border-b border-gray-300 py-3 cursor-pointer hover:bg-gray-50 outline-none;
+
+      .ballet {
+        @apply transition-all duration-500;
+      }
+    }
+
+    .accordion-body {
+      @apply px-4 pt-0 transition-all duration-200 overflow-hidden;
+    }
+
+    &.accordion-collapsed {
+      .accordion-header {
+        .ballet {
+          @apply transform rotate-180;
+        }
+      }
+    }
+  }
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+@mixin font-black {
+ font-family: 'Montserrat', sans-serif;
+}
+
+@mixin input-style() {
+  @apply border focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 #{!important};
+  @apply mt-1 block rounded-md border-gray-300 shadow-sm;
+}

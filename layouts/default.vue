@@ -13,6 +13,11 @@ import AppHeader from "../components/AppHeader";
 export default {
   components: {
     AppHeader
+  },
+  mounted() {
+    this.$store.dispatch("getItems").then(item => {
+      console.log(this.$store.state.items)
+    })
   }
 }
 </script>

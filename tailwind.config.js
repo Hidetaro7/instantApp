@@ -9,7 +9,7 @@ module.exports = {
     './plugins/**/*.{js,ts}',
     './nuxt.config.{js,ts}',
   ],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   important: true,
   theme: {
     extend: {
@@ -28,5 +28,7 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [typography, forms],
+  plugins: [typography, forms({
+    strategy: 'class',
+  }),],
 }
