@@ -2,7 +2,7 @@
   <div class=" container">
     <div class="prose max-w-xl m-auto pt-8">
       <form action="#">
-        <h1>お問い合わせフォーム</h1>
+        <h1 class="text-2xl md:text-4xl">お問い合わせフォーム</h1>
         <div class="mb-4">
           <h2 class="text-gray-700 text-xl">御社（あなた様）の情報</h2>
           <label class="form-label">

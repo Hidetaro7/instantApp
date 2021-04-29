@@ -2,7 +2,7 @@
   <div class="flex flex-grow">
     <div class="relative m-auto w-10/12">
       <input @input="checkSearchRecommend" ref="inputKeyword" placeholder="商品を検索" type="text" class=" h-10 form-input w-full bg-transparent border-gray-500 text-white mt-0">
-      <div v-if="results.length > 0" class="rounded-b-md absolute w-full top-10 bg-gray-800 border-gray-500 border border-t-0 overflow-hidden">
+      <div v-if="results.length > 0" class="rounded-b-md fixed left-0 md:absolute w-screen md:w-full top-10 bg-gray-800 border-gray-500 border border-t-0 overflow-hidden">
         <nuxt-link @click.native.prevent="clickLink" :to="'/' + item.id" class="block p-4 text-white hover:bg-gray-700" v-for="(item, index) in results" :key="index">{{item.shape}}</nuxt-link>
       </div>
     </div>
